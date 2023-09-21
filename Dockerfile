@@ -10,10 +10,10 @@ RUN echo "deb http://security.debian.org/debian-security bullseye-security main 
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
     libpng-dev \
-    libjpeg62-turbo-dev \
+    build-essential \
     libfreetype6-dev \
+    libjpeg62-turbo-dev \
     locales \
     zip \
     jpegoptim optipng pngquant gifsicle \
