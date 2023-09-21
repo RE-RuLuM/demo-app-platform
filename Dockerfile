@@ -6,12 +6,16 @@ COPY composer.lock composer.json /var/www/
 # Set working directory
 WORKDIR /var/www
 
+RUN apt-get install debian-keyring debian-archive-keyring
+
+RUN apt-key update
+
+RUN apt-get update
+
 RUN echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    debian-keyring \
-    debian-archive-keyring \
     libpng-dev \
     build-essential \
     libfreetype6-dev \
@@ -23,10 +27,6 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl
-
-RUN apt-key update
-
-RUN apt-get update
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
