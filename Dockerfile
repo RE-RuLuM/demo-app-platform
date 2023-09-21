@@ -6,6 +6,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 
 RUN echo "deb http://deb.debian.org/debian jessie main" > /etc/apt/sources.list
 
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+
 RUN apt-get update -y && apt-get install -y openssl zip unzip git
 
 # Copy composer.lock and composer.json
