@@ -12,7 +12,7 @@ WORKDIR /var/www
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-RUN composer install
+RUN composer install && composer update
 
 # Add user for laravel application
 RUN groupadd -g 1000 www
