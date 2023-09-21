@@ -6,8 +6,10 @@ COPY composer.lock composer.json /var/www/
 # Set working directory
 WORKDIR /var/www
 
+RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+
 # Install dependencies
-RUN apt-get --allow-releaseinfo-change update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
     libjpeg62-turbo-dev \
