@@ -7,7 +7,7 @@ COPY composer.lock composer.json /var/www/
 WORKDIR /var/www
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get --allow-releaseinfo-change update && apt-get install -y \
     build-essential \
     libpng-dev \
     libjpeg62-turbo-dev \
