@@ -6,7 +6,7 @@ COPY composer.lock composer.json /var/www/
 # Set working directory
 WORKDIR /var/www
 
-RUN sed -i '/jessie-updates/d' /etc/apt/sources.list
+RUN echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
