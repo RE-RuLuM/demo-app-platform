@@ -4,6 +4,19 @@ RUN docker-php-ext-install pdo pdo_mysql sockets
 RUN curl -sS https://getcomposer.org/installer | php -- \
      --install-dir=/usr/local/bin --filename=composer
 
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    build-essential \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    locales \
+    zip \
+    jpegoptim optipng pngquant gifsicle \
+    vim \
+    unzip \
+    git \
+    curl
+
 # Copy composer.lock and composer.json
 COPY composer.lock composer.json /var/www/
 
